@@ -1,0 +1,11 @@
+C:\Users\micha\OneDrive\Desktop\C# Boot Camp\MidtermProject\MidtermProject\MidtermProject\bin\Debug\netcoreapp3.0\MidtermProject.exe
+C:\Users\micha\OneDrive\Desktop\C# Boot Camp\MidtermProject\MidtermProject\MidtermProject\bin\Debug\netcoreapp3.0\MidtermProject.deps.json
+C:\Users\micha\OneDrive\Desktop\C# Boot Camp\MidtermProject\MidtermProject\MidtermProject\bin\Debug\netcoreapp3.0\MidtermProject.runtimeconfig.json
+C:\Users\micha\OneDrive\Desktop\C# Boot Camp\MidtermProject\MidtermProject\MidtermProject\bin\Debug\netcoreapp3.0\MidtermProject.runtimeconfig.dev.json
+C:\Users\micha\OneDrive\Desktop\C# Boot Camp\MidtermProject\MidtermProject\MidtermProject\bin\Debug\netcoreapp3.0\MidtermProject.dll
+C:\Users\micha\OneDrive\Desktop\C# Boot Camp\MidtermProject\MidtermProject\MidtermProject\bin\Debug\netcoreapp3.0\MidtermProject.pdb
+C:\Users\micha\OneDrive\Desktop\C# Boot Camp\MidtermProject\MidtermProject\MidtermProject\obj\Debug\netcoreapp3.0\MidtermProject.csprojAssemblyReference.cache
+C:\Users\micha\OneDrive\Desktop\C# Boot Camp\MidtermProject\MidtermProject\MidtermProject\obj\Debug\netcoreapp3.0\MidtermProject.AssemblyInfoInputs.cache
+C:\Users\micha\OneDrive\Desktop\C# Boot Camp\MidtermProject\MidtermProject\MidtermProject\obj\Debug\netcoreapp3.0\MidtermProject.AssemblyInfo.cs
+C:\Users\micha\OneDrive\Desktop\C# Boot Camp\MidtermProject\MidtermProject\MidtermProject\obj\Debug\netcoreapp3.0\MidtermProject.dll
+C:\Users\micha\OneDrive\Desktop\C# Boot Camp\MidtermProject\MidtermProject\MidtermProject\obj\Debug\netcoreapp3.0\MidtermProject.pdb
