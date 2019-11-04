@@ -21,7 +21,7 @@ namespace MidtermProject
             M9,
             MINE
         };
-
+        // global variables 
         public static bool winOrLose;
         public static int gridWidth, gridHeight, mineCount;
         public static string[,] blankBoard;
@@ -235,6 +235,11 @@ namespace MidtermProject
                     PrintField(field);
                 }
             }
+        }
+
+        public static void WinGame()
+        {
+
         }
 
         public static void DisplayBoard()
