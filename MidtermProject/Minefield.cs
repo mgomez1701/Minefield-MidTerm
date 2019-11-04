@@ -21,10 +21,12 @@ namespace MidtermProject
             M9,
             MINE
         };
+
         // global variables 
+        public static int[] mineLocation;
         public static bool winOrLose;
         public static int gridWidth, gridHeight, mineCount;
-        public static string[,] blankBoard;
+        public static string[,] gameBoard;
 
         // main is not giving me errors here// 
 
@@ -105,7 +107,8 @@ namespace MidtermProject
         static Cell [,] GenerateMineField(int width, int height, int count)
         {
             Cell[,] cells = new Cell[width, height];
-            blankBoard = new string[width, height]; // initilizing blank board 
+            gameBoard = new string[width, height]; // initilizing blank board 
+            mineLocation = new int[count];
              // assign all elements in minefield to 0 
             for(int x = 0; x < width; x++) 
             {
@@ -126,6 +129,7 @@ namespace MidtermProject
                 if (cells[x, y] < Cell.MINE)
                 {
                     cells[x, y] = Cell.MINE;
+                    
 
                     if (y - 1 >= 0)
                     {
@@ -205,11 +209,11 @@ namespace MidtermProject
 
         public static void InitilizeBoard()
         {
-            for (int i = 0; i < blankBoard.GetLength(1); i++)
+            for (int i = 0; i < gameBoard.GetLength(1); i++)
             {
-                for (int j = 0; j < blankBoard.GetLength(1); j++)
+                for (int j = 0; j < gameBoard.GetLength(1); j++)
                 {
-                    blankBoard[i, j] = ".";
+                    gameBoard[i, j] = ".";
                 }
             }
         }
@@ -218,17 +222,18 @@ namespace MidtermProject
         {
             if (answer == "f")
             {
-                blankBoard[coordX, coordY] = "F";
+                gameBoard[coordX, coordY] = "F";
+                WinGame(field, coordX, coordY);
             }
             else
             {
                 if (field[coordX, coordY] != Cell.EMPTY && field[coordX, coordY] != Cell.MINE)
                 {
-                    blankBoard[coordX, coordY] = ((int)(Cell)field[coordX, coordY]).ToString();
+                    gameBoard[coordX, coordY] = ((int)(Cell)field[coordX, coordY]).ToString();
                 }
                 else if (field[coordY, coordY] == Cell.EMPTY && answer == "r")
                 {
-                    blankBoard[coordX, coordY] = "X";
+                    gameBoard[coordX, coordY] = "X";
                 }
                 else if (field[coordX, coordY] == Cell.MINE)
                 {
@@ -237,18 +242,25 @@ namespace MidtermProject
             }
         }
 
-        public static void WinGame()
+        public static void WinGame(Cell[,]field, int coordX, int coordY)
         {
-
+            if(field[coordX,coordY] == Cell.MINE && gameBoard[coordX,coordY] == "F")
+            {
+                mineCount--;
+            }
+            if(mineCount == 0)
+            {
+                Console.WriteLine("YOU WIN!!!!");
+            }
         }
 
         public static void DisplayBoard()
         {
-            for (int i = 0; i < blankBoard.GetLength(1); i++)
+            for (int i = 0; i < gameBoard.GetLength(1); i++)
             {
-                for (int j = 0; j < blankBoard.GetLength(0); j++)
+                for (int j = 0; j < gameBoard.GetLength(0); j++)
                 {
-                    Console.Write(blankBoard[i,j]);
+                    Console.Write(gameBoard[i,j]);
                 }
                 Console.WriteLine("");
             }
