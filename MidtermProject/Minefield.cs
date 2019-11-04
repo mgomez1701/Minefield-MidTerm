@@ -22,17 +22,38 @@ namespace MidtermProject
             MINE
         };
 
+        public static bool winOrLose;
         public static int gridWidth, gridHeight, mineCount;
+        public static string[,] blankBoard;
 
         // main is not giving me errors here// 
 
         static void Main(string[] args)
         {
-            Minefield.Cell[,] gridCells;
-
+            Minefield.Cell[,] gridCells; // storing the grid 
+            
             GetInput();
 
             gridCells = GenerateMineField(gridWidth, gridHeight, mineCount);
+            InitilizeBoard();
+            DisplayBoard();
+
+            winOrLose = false;
+            while (!winOrLose)
+            {
+                Console.WriteLine("Enter coordinate X: ");
+                int x = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter coordinate y: ");
+                int y = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Reveal or Flag?:  ");
+               string answer = (Console.ReadLine());
+
+                PopulateDisplayBoard(gridCells, x, y, answer);
+                DisplayBoard();
+
+            }
 
             PrintField(gridCells);
 
@@ -42,7 +63,7 @@ namespace MidtermProject
         {
             string input = "";
 
-            Console.WriteLine("Enter width; ");
+            Console.WriteLine("Enter width: ");
             input = Console.ReadLine();
 
             while (!Int32.TryParse(input, out gridWidth))
@@ -84,6 +105,7 @@ namespace MidtermProject
         static Cell [,] GenerateMineField(int width, int height, int count)
         {
             Cell[,] cells = new Cell[width, height];
+            blankBoard = new string[width, height]; // initilizing blank board 
              // assign all elements in minefield to 0 
             for(int x = 0; x < width; x++) 
             {
@@ -175,25 +197,74 @@ namespace MidtermProject
                         i--;
                     }
                 }
-               
+                
             }
             return cells;
 
         }
 
+        public static void InitilizeBoard()
+        {
+            for (int i = 0; i < blankBoard.GetLength(1); i++)
+            {
+                for (int j = 0; j < blankBoard.GetLength(1); j++)
+                {
+                    blankBoard[i, j] = ".";
+                }
+            }
+        }
+
+        public static void PopulateDisplayBoard (Cell [,] field, int coordX, int coordY, string answer)
+        {
+            if (answer == "f")
+            {
+                blankBoard[coordX, coordY] = "F";
+            }
+            else
+            {
+                if (field[coordX, coordY] != Cell.EMPTY && field[coordX, coordY] != Cell.MINE)
+                {
+                    blankBoard[coordX, coordY] = ((int)(Cell)field[coordX, coordY]).ToString();
+                }
+                else if (field[coordY, coordY] == Cell.EMPTY && answer == "r")
+                {
+                    blankBoard[coordX, coordY] = "X";
+                }
+                else if (field[coordX, coordY] == Cell.MINE)
+                {
+                    PrintField(field);
+                }
+            }
+        }
+
+        public static void DisplayBoard()
+        {
+            for (int i = 0; i < blankBoard.GetLength(1); i++)
+            {
+                for (int j = 0; j < blankBoard.GetLength(0); j++)
+                {
+                    Console.Write(blankBoard[i,j]);
+                }
+                Console.WriteLine("");
+            }
+        }
+
+     
         static void PrintField(Cell [,] field)
         {
+            winOrLose = true;
+            Console.WriteLine("YOU LOSE!!!!!");
             for (int y = 0; y < field.GetLength(1); y++)
             {
                 for(int x = 0; x < field.GetLength(0); x++)
                 {
                     if(field [x,y] == Cell.EMPTY)
                     {
-                        Console.WriteLine(".");
+                        Console.Write(".");
                     }
                     else if (field[x,y] == Cell.MINE)
                     {
-                        Console.WriteLine("M");
+                        Console.Write("M");
                         // showing the # around the mines
                     }
                     else
